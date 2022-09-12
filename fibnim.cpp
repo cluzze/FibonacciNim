@@ -4,8 +4,10 @@
 
 void calculate_fibs(int *fibs, int size)
 {
+	MYASSERT(fibs)
+
 	Matrix a = {1, 1, 1, 0};
-	
+
 	for (int i = size - 1; i >= 1; --i)
 	{
 		if (fibs[i] == 0)
@@ -15,6 +17,8 @@ void calculate_fibs(int *fibs, int size)
 
 int next_turn(int total, int possible, int *fibs, int size)
 {
+	MYASSERT(fibs)
+
 	int min_fib = find_min_fib(total, fibs, size);
 
 	return min_fib <= possible ? min_fib : 1;
@@ -22,6 +26,8 @@ int next_turn(int total, int possible, int *fibs, int size)
 
 int find_min_fib(int total, int *fibs, int size)
 {
+	MYASSERT(fibs)
+
 	int i = lower_bound(2, size - 1, total, fibs);
 	int result = 0;
 

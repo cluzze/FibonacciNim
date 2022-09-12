@@ -17,6 +17,8 @@ Matrix matrix_mult(Matrix a, Matrix b)
 
 Matrix matrix_pow(Matrix a, int power, int *fibs)
 {
+	MYASSERT(fibs)
+
 	Matrix result = a;
 	int arr[50] = {0};
 	int size = 0;
@@ -42,6 +44,8 @@ Matrix matrix_pow(Matrix a, int power, int *fibs)
 
 int break_power(int power, int *arr)
 {
+	MYASSERT(arr)
+
 	int i = 0;
 	arr[i++] = power;
 	while (power)
@@ -62,12 +66,18 @@ int break_power(int power, int *arr)
 
 void reverse(int *arr, int size)
 {
+	MYASSERT(arr)
+
 	for (int i = 0; i < size / 2; ++i)
 		swap(arr + i, arr + size - 1 - i);
 }
 
 void swap(int *a, int *b)
 {
+	MYASSERT(a)
+	MYASSERT(b)
+	MYASSERT(a != b)
+
 	int tmp = *a;
 	*a = *b;
 	*b = tmp;
