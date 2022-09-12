@@ -6,15 +6,20 @@
 
 #define SIZE 41
 
+enum Players
+{
+	PROGRAM = 0,
+	PLAYER  = 1
+};
+
 int main()
 {
 	int fibs[SIZE] = {0};
 	int total = 0, possible = 0;
-	int who_moves = 0, took = 0;;
+	int who_moves = PROGRAM, took = 0;;
 	char buffer[SIZE];
 
 	calculate_fibs(fibs, SIZE);
-
 
 	printf("Enter number of coines: ");
 	fgets(buffer, SIZE, stdin);
@@ -23,12 +28,12 @@ int main()
 	
 	printf("Do you wnat to move first? (y/n) ");
 	fgets(buffer, SIZE, stdin);
-	who_moves = buffer[0] == 'y' ? 1 : 0;
+	who_moves = buffer[0] == 'y' ? PLAYER : PROGRAM;
 
 	while (total > 0)
 	{
 		printf("\nCoins now: %d, possible to take: %d\n", total, possible);
-		if (who_moves == 1)
+		if (who_moves == PLAYER)
 		{
 			printf("How many do you want to take? ");
 			fgets(buffer, SIZE, stdin);
@@ -49,7 +54,7 @@ int main()
 		}
 	}
 
-	if (who_moves == 1)
+	if (who_moves == PLAYER)
 	{
 		printf("You lost\n");
 	}
